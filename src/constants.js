@@ -1,5 +1,4 @@
 import { Assets } from "pixi.js"
-import { R } from "./reactifyInstance"
 
 export const textures = {
     BG_BEDROOM: { src: './assets/images/bg/bedroom.png' },
@@ -61,5 +60,3 @@ export const musics = {
     FIRST_MEET_SAYORI: { src: './assets/audio/bgm/2.ogg' },
 }
 
-loadTextures()
-    .then(() => R.emit('textures.loaded'))

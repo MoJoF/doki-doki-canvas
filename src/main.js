@@ -1,7 +1,5 @@
 import { Application } from "pixi.js";
-import { R } from './reactifyInstance.js'
-
-// import { textures, loadTextures, sounds } from './constants'
+import { textures, loadTextures, sounds } from './constants'
 import { drawTextbox } from "./gui/drawTextbox";
 import { typewriter } from "./typewriter";
 import { main_menu_scene } from "./scenes/main_menu_scene";
@@ -9,8 +7,6 @@ import { game_scene } from "./scenes/game_scene";
 import { write_poem_scene } from "./scenes/write_poem_scene";
 import { warning_scene } from "./scenes/warning_scene";
 import { act1 } from "./lore/act1";
-import "./constants.js"
-import "./modules/mainModule.js"
 
 
 export const app = new Application()
@@ -22,8 +18,6 @@ await app.init({
     webgl: { antialias: true },
     webgpu: { antialias: false },
 });
-
-R.emit('app.initialized')
 
 globalThis.__PIXI_APP__ = app;
 
@@ -44,6 +38,17 @@ window.currentMusic = new Audio()
 window.currentMusic.loop = true
 window.currentMusic.volume = 0.75
 
+window.currentSound = new Audio()
+window.currentSound.volume = 1
+
+window.playSound = (src) => {
+    if (!currentSound.currentSrc) {
+        currentSound.pause()
+        currentSound.currentTime = 0
+    }
+    currentSound.src = sound.src
+    currentSound.play()
+}
 
 // Имя игрока
 window.playerName = "[NONE]"
@@ -57,7 +62,7 @@ window.playMusic = (src) => {
     window.currentMusic.play()
 }
 
-R.on('textures.loaded', () => {
+loadTextures().then(() => {
     if (window.CURRENT_SCENE === 'MAIN_MENU') {
         main_menu_scene()
     } else if (window.CURRENT_SCENE === 'GAME') {
@@ -68,7 +73,6 @@ R.on('textures.loaded', () => {
         warning_scene()
     }
 })
-
 
 
 window.addEventListener('keydown', e => {

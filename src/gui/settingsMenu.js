@@ -1,6 +1,6 @@
 import { Container, Sprite, Text, TextStyle } from 'pixi.js'
 import { textures } from '../constants'
-import { app, R } from '../main'
+import { app } from '../main'
 import PixiSlider from "../gui/slider.js"
 
 
@@ -104,14 +104,10 @@ export const settingsMenu = (parent) => {
     // Слайдер громкости звука
     const soundVolumeSlider = new PixiSlider(300, 0, 100)
     soundVolumeSlider.y += 72
-
-    R.when('module.sound:ready', sound => {
-        soundVolumeSlider.setValue(sound.volume * 100)
-    })
+    soundVolumeSlider.setValue(currentSound.volume * 100)
 
     soundVolumeSlider.onValueChange = (v) => {
-        R.emit('sound.change', { volume: v / 100 })
-
+        window.currentSound.volume = v / 100
     }
     soundVolumeContainer.addChild(textAudio2)
     soundVolumeContainer.addChild(soundVolumeSlider)
