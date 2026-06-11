@@ -1,9 +1,12 @@
 import { Assets } from "pixi.js"
 
 export const textures = {
+    // Фоны
     BG_BEDROOM: { src: './assets/images/bg/bedroom.png' },
     BG_RESIDENTIAL: { src: './assets/images/bg/residential.png' },
     BG_CLASSROOM: { src: './assets/images/bg/class.png' },
+
+    // Текстуры
     TEXTBOX: { src: './assets/images/gui/textbox.png', w: 816, h: 146 },
     NAMEBOX: { src: './assets/images/gui/namebox.png', w: 168, h: 39 },
     FRAME: { src: './assets/images/gui/frame.png', w: 600, h: 250 },
