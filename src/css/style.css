@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+canvas {
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+}
+
+.font-preload {
+    font-family: 'Aller_Rg';
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+}
