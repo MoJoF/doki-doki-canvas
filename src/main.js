@@ -46,7 +46,7 @@ window.playSound = (src) => {
         currentSound.pause()
         currentSound.currentTime = 0
     }
-    currentSound.src = sound.src
+    currentSound.src = src
     currentSound.play()
 }
 
