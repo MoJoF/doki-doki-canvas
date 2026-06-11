@@ -10,11 +10,11 @@ export const process_lore = (lore, i) => {
     const namePanel = app.stage.getChildByLabel('namePanel', { deep: true }) // контейнер с именем (textbox)
     const nameText = app.stage.getChildByLabel('nameText', { deep: true }) // текст имени 
     const scenarioText = app.stage.getChildByLabel('scenario', { deep: true }) // текст сюжета
-    const bg = app.stage.getChildByLabel('bg', { deep: true })
-    const monikaSprite = app.stage.getChildByLabel('Моника', { deep: true })
-    const yuriSprite = app.stage.getChildByLabel('Юри', { deep: true })
-    const natsukiSprite = app.stage.getChildByLabel('Нацуки', { deep: true })
-    const sayoriSprite = app.stage.getChildByLabel('Сайори', { deep: true })
+    const bg = app.stage.getChildByLabel('bg', { deep: true }) // Спрайт с фоном
+    const monikaSprite = app.stage.getChildByLabel('Моника', { deep: true }) // Спрайт Моники
+    const yuriSprite = app.stage.getChildByLabel('Юри', { deep: true }) // Спрайт Юри
+    const natsukiSprite = app.stage.getChildByLabel('Нацуки', { deep: true }) // Спрайт Нацуки
+    const sayoriSprite = app.stage.getChildByLabel('Сайори', { deep: true }) // Спрайт Сайори
 
     // Обработка вывода текста
     if (item.text) {
