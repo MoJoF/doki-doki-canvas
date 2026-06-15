@@ -28,7 +28,7 @@ export const act1 = [
     { text: 'Клуб?', name: 'player', sprites: { sayori: 'SAYORI_3' } },
     { text: 'Я уже говорил тебе, я не заинтересован во вступлении в клубы.', name: 'player', sprites: { sayori: 'SAYORI_3' } },
     { text: 'Даже не искал ещё.', name: 'player', sprites: { sayori: 'SAYORI_3' } },
-    { text: 'Ааа? Это не правда?', name: 'Сайори', sprites: { sayori: 'SAYORI_5' }, anims: { sayori: 'top-down' } },
+    { text: 'Ааа? Это не правда!', name: 'Сайори', sprites: { sayori: 'SAYORI_5' }, anims: { sayori: 'top-down' } },
     { text: 'Ты сказал мне, что вступишь в клуб в этом году!', name: 'Сайори', sprites: { sayori: 'SAYORI_5' } },
     { text: 'Разве?..', name: 'player', sprites: { sayori: 'SAYORI_5' } },
     { text: 'Возможно, я и правда мог это сказать в одном из множеств наших разговоров, где я пренебрежительно соглашался со всем, что она говорила.', sprites: { sayori: 'SAYORI_5' } },

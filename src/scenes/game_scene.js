@@ -80,7 +80,7 @@ export const game_scene = (lore = []) => {
 
             clickable_lore.on('pointerdown', () => {
                 i++
-                process_lore(act1, i)
+                process_lore(lore, i)
             })
         }
     })
