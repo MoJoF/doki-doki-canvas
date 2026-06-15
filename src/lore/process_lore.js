@@ -63,8 +63,8 @@ export const process_lore = (lore, i) => {
     }
 
     // Определяем, должны ли быть спрайты на сцене
-    sprites_existing_process(item, { sayoriSprite, natsukiSprite, yuriSprite, monikaSprite })
-    
+    const activeSprites = sprites_existing_process(item, { sayoriSprite, natsukiSprite, yuriSprite, monikaSprite })
+
     // Анимации
     anims_process(item, { sayoriSprite, natsukiSprite, yuriSprite, monikaSprite })
 }
