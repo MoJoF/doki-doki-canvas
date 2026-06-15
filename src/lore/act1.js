@@ -62,7 +62,7 @@ export const act1 = [
     { text: 'Я думала, что поймаю тебя, когда ты будешь выходить из класса, но увидела, как ты сидишь тут и просто витаешь в облаках, поэтому зашла.', name: 'Сайори', sprites: { sayori: 'SAYORI_3' }, anims: { sayori: 'top-down' } },
     { text: 'Честно говоря, ты иногда даже хуже меня... я впечатлена!', name: 'Сайори', sprites: { sayori: 'SAYORI_3' } },
     { text: 'Тебе не нужно меня ждать, если из-за этого ты опоздаешь в свой клуб.', name: 'player', sprites: { sayori: 'SAYORI_3' } },
-    { text: 'Нуу, я посчитала, что тебе нужен некий стимул, поэтому я подумала, ну, знаешь...', name: 'Сайори', sprites: { sayori: 'SAYORI_10' }, anims: { sayori: 'top-down' } },
+    { text: 'Нуу, я посчитала, что тебе нужен некий стимул, поэтому я подумала, ну, знаешь...', name: 'Сайори', sprites: { sayori: 'SAYORI_10' }, anims: { sayori: 'down-top' } },
     { text: 'Знаю что?', name: 'player', sprites: { sayori: 'SAYORI_10' } },
     { text: 'Нуу, что ты мог бы вступить в мой клуб!', name: 'Сайори', sprites: { sayori: 'SAYORI_3' } },
     { text: 'Сайори...', name: 'player', sprites: { sayori: 'SAYORI_3' } },
@@ -86,4 +86,11 @@ export const act1 = [
     { text: "Я испустил длинный вздох.", sprites: { sayori: 'SAYORI_14' } },
     { text: "Хорошо... я загляну ради кексов, ладно?", name: "player", sprites: { sayori: 'SAYORI_14' } },
     { text: "Да! Пошли~!", name: "Сайори", sprites: { sayori: 'SAYORI_8' }, anims: { sayori: 'top-down' } },
+
+    { text: "Итак, сегодня знаменуется день, когда я продал свою душу за кексы.", music: "no", bg: "BG_CORRIDOR" },
+    { text: "Я удручённо следовал за Сайори по лестнице — в часть школы, которую я редко посещал, используемую в основном третьегодками и для мероприятий." },
+    { text: "Сайори, полная энергии, распахнула дверь комнаты." },
+
+    { text: "Всем привет! Я привела новенького!", name: "Сайори", bg: "BG_CLUB", sprites: { sayori: '' } },
+    { text: "Всем привет! Я привела новенького!", name: "player", sprites: { sayori: '' } },
 ]

@@ -1,6 +1,6 @@
 import gsap from "gsap"
 
-export const sprites_existing_process = (item, sprites) => {
+export const sprites_existing_process = (item, sprites, textures) => {
     let activeSprites = []
     const { sayoriSprite, natsukiSprite, yuriSprite, monikaSprite } = sprites
 

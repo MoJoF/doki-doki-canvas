@@ -5,6 +5,8 @@ export const textures = {
     BG_BEDROOM: { src: './assets/images/bg/bedroom.png' },
     BG_RESIDENTIAL: { src: './assets/images/bg/residential.png' },
     BG_CLASSROOM: { src: './assets/images/bg/class.png' },
+    BG_CORRIDOR: { src: './assets/images/bg/corridor.png' },
+    BG_CLUB: { src: './assets/images/bg/club.png' },
 
     // Текстуры
     TEXTBOX: { src: './assets/images/gui/textbox.png', w: 816, h: 146 },

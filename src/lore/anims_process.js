@@ -9,6 +9,8 @@ export const anims_process = (item, sprites) => {
                 gsap.to(sayoriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
             } else if (item.anims.sayori === 'down') {
                 gsap.to(sayoriSprite, { y: '+=10', duration: 0.5 })
+            } else if (item.anims.sayori === 'down-top') {
+                gsap.to(sayoriSprite, { y: '+=5', duration: 0.15, yoyo: true, repeat: 1 })
             }
         }
         if (item.anims.yuri) {
@@ -16,6 +18,8 @@ export const anims_process = (item, sprites) => {
                 gsap.to(yuriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
             } else if (item.anims.yuri === 'down') {
                 gsap.to(yuriSprite, { y: '+=10', duration: 0.5 })
+            } else if (item.anims.yuri === 'down-top') {
+                gsap.to(sayoriSprite, { y: '+=5', duration: 0.15, yoyo: true, repeat: 1 })
             }
         }
         if (item.anims.natsuki) {
@@ -23,6 +27,8 @@ export const anims_process = (item, sprites) => {
                 gsap.to(natsukiSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
             } else if (item.anims.natsuki === 'down') {
                 gsap.to(natsukiSprite, { y: '+=10', duration: 0.5 })
+            } else if (item.anims.natsuki === 'down-top') {
+                gsap.to(sayoriSprite, { y: '+=5', duration: 0.15, yoyo: true, repeat: 1 })
             }
         }
         if (item.anims.monika) {
@@ -30,6 +36,8 @@ export const anims_process = (item, sprites) => {
                 gsap.to(monikaSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
             } else if (item.anims.monika === 'down') {
                 gsap.to(monikaSprite, { y: '+=10', duration: 0.5 })
+            } else if (item.anims.monika === 'down-top') {
+                gsap.to(sayoriSprite, { y: '+=5', duration: 0.15, yoyo: true, repeat: 1 })
             }
         }
     }
