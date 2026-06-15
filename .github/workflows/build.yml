@@ -30,19 +30,16 @@ jobs:
       - name: Run build
         run: npm run build
 
-      # Настройка окружения Pages на стороне GitHub
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Загрузка результатов сборки в хранилище GitHub Artifacts
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ВАЖНО: Укажите папку, в которую ваш проект собирает файлы.
-          # Для Vite / Vue / React это обычно 'dist', для старых версий React 'build', для Next.js 'out'.
-          path: "./dist"
+          path: "./dist" # Проверьте, что папка называется именно 'dist'
 
-      # Публикация файлов на хостинг GitHub Pages
+      # Этот шаг теперь выполнится ТОЛЬКО при пуше в main, игнорируя Pull Requests
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: deployment
         uses: actions/deploy-pages@v4
