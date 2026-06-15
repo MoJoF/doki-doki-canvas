@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-project:
@@ -22,10 +22,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
 
       - name: Run build
         run: npm run build
+
+      # Настройка окружения Pages на стороне GitHub
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Загрузка результатов сборки в хранилище GitHub Artifacts
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # ВАЖНО: Укажите папку, в которую ваш проект собирает файлы.
+          # Для Vite / Vue / React это обычно 'dist', для старых версий React 'build', для Next.js 'out'.
+          path: "./dist"
+
+      # Публикация файлов на хостинг GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
