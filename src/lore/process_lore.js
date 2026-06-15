@@ -38,6 +38,7 @@ export const process_lore = (lore, i) => {
 
         if (targetTexture) {
             bg.texture = targetTexture
+
             gsap.to([sayoriSprite, monikaSprite, natsukiSprite, yuriSprite], {
                 alpha: 0, duration: 0.5, onComplete: () => {
                     sayoriSprite.visible = false

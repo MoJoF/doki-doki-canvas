@@ -74,7 +74,7 @@ export const game_scene = (lore = []) => {
 
     gsap.to(GAME_CONT, {
         alpha: 1, duration: 1, onComplete: () => {
-            let i = 0
+            let i = 46
 
             process_lore(lore, i)
 
