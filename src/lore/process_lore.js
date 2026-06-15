@@ -2,6 +2,7 @@ import { typewriter } from "../typewriter"
 import { app } from "../main"
 import { textures } from "../constants"
 import gsap from "gsap"
+import { anims_process } from "./anims_process"
 
 export const process_lore = (lore, i) => {
     const item = lore[i]
@@ -139,34 +140,35 @@ export const process_lore = (lore, i) => {
     }
 
     // Анимации
-    if (item.anims) {
-        if (item.anims.sayori) {
-            if (item.anims.sayori === 'top-down') {
-                gsap.to(sayoriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
-            } else if (item.anims.sayori === 'down') {
-                gsap.to(sayoriSprite, { y: '+=10', duration: 0.5 })
-            }
-        }
-        if (item.anims.yuri) {
-            if (item.anims.yuri === 'top-down') {
-                gsap.to(yuriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
-            } else if (item.anims.yuri === 'down') {
-                gsap.to(yuriSprite, { y: '+=10', duration: 0.5 })
-            }
-        }
-        if (item.anims.natsuki) {
-            if (item.anims.natsuki === 'top-down') {
-                gsap.to(natsukiSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
-            } else if (item.anims.natsuki === 'down') {
-                gsap.to(natsukiSprite, { y: '+=10', duration: 0.5 })
-            }
-        }
-        if (item.anims.monika) {
-            if (item.anims.monika === 'top-down') {
-                gsap.to(monikaSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
-            } else if (item.anims.monika === 'down') {
-                gsap.to(monikaSprite, { y: '+=10', duration: 0.5 })
-            }
-        }
-    }
+    anims_process(item, { sayoriSprite, natsukiSprite, yuriSprite, monikaSprite })
+    // if (item.anims) {
+    //     if (item.anims.sayori) {
+    //         if (item.anims.sayori === 'top-down') {
+    //             gsap.to(sayoriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
+    //         } else if (item.anims.sayori === 'down') {
+    //             gsap.to(sayoriSprite, { y: '+=10', duration: 0.5 })
+    //         }
+    //     }
+    //     if (item.anims.yuri) {
+    //         if (item.anims.yuri === 'top-down') {
+    //             gsap.to(yuriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
+    //         } else if (item.anims.yuri === 'down') {
+    //             gsap.to(yuriSprite, { y: '+=10', duration: 0.5 })
+    //         }
+    //     }
+    //     if (item.anims.natsuki) {
+    //         if (item.anims.natsuki === 'top-down') {
+    //             gsap.to(natsukiSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
+    //         } else if (item.anims.natsuki === 'down') {
+    //             gsap.to(natsukiSprite, { y: '+=10', duration: 0.5 })
+    //         }
+    //     }
+    //     if (item.anims.monika) {
+    //         if (item.anims.monika === 'top-down') {
+    //             gsap.to(monikaSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
+    //         } else if (item.anims.monika === 'down') {
+    //             gsap.to(monikaSprite, { y: '+=10', duration: 0.5 })
+    //         }
+    //     }
+    // }
 }

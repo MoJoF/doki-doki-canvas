@@ -23,7 +23,7 @@ globalThis.__PIXI_APP__ = app;
 
 document.body.appendChild(app.canvas)
 
-window.CURRENT_SCENE = "WARNING"
+window.CURRENT_SCENE = "MAIN_MENU"
 
 // Глобальный массив с лором
 window.lore = []
