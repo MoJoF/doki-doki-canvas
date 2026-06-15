@@ -3,7 +3,7 @@ import gsap from "gsap"
 export const anims_process = (item, sprites) => {
     if (item.anims) {
         const { sayoriSprite, natsukiSprite, yuriSprite, monikaSprite } = sprites
-
+        
         if (item.anims.sayori) {
             if (item.anims.sayori === 'top-down') {
                 gsap.to(sayoriSprite, { y: '-=5', duration: 0.15, yoyo: true, repeat: 1 })
