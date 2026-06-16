@@ -86,7 +86,7 @@ export const drawTextbox = (drawBtns = true, name = null) => {
 
     
 
-    // NAMEBOX
+    // NAMEBOX - текстура для вывода имени говорящего
     const nameboxTexture = textures.NAMEBOX.texture
     const nameboxContainer = new Container()
     nameboxContainer.label = 'namePanel'
@@ -143,7 +143,7 @@ export const drawTextbox = (drawBtns = true, name = null) => {
     t.label = 'scenario'
     t.position.set(10, 10)
 
-    // Кликабельный контейнер
+    // Кликабельный контейнер - невидимая область для продвижения по сюжету
     const transparentCont = new Graphics().roundRect(0, 0, tbW, 100, 10).fill('rgba(0, 0, 0, 0)')
     transparentCont.label = 'clickable_lore'
 
