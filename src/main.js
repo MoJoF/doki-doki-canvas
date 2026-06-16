@@ -17,6 +17,7 @@ await app.init({
     backgroundColor: 0x121212,
     webgl: { antialias: true },
     webgpu: { antialias: false },
+    preserveDrawingBuffer: true
 });
 
 globalThis.__PIXI_APP__ = app;
