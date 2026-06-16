@@ -1,4 +1,4 @@
-import { textures } from "../constants.js"
+import { textures, sounds } from "../constants.js"
 import { drawTextbox } from "../gui/drawTextbox.js"
 import { Container, Sprite, Text, TextStyle } from "pixi.js"
 import { app } from "../main.js"
@@ -64,18 +64,18 @@ export const game_scene = (lore = []) => {
     GAME_CONT.addChild(yuriSprite)
     GAME_CONT.addChild(monikaSprite)
     GAME_CONT.addChild(natsukiSprite)
-    
+
     GAME_CONT.addChild(textboxCont)
 
     textboxCont.y -= 10
 
     const clickable_lore = textboxCont.getChildByLabel('clickable_lore')
-    
+
     // Подменю
     const GameMenuCont = GameMenuPanel()
     GAME_CONT.addChild(GameMenuCont)
-    
-    const historyBtn = GAME_CONT.getChildByLabel('HISTORY_BUTTON_TEXTBOX', { deep: true })
+
+    const GameMenuHeader = GAME_CONT.getChildByLabel('GAME_MENU_HEADER', { deep: true })
 
     gsap.to(GAME_CONT, {
         alpha: 1, duration: 1, onComplete: () => {
@@ -90,11 +90,63 @@ export const game_scene = (lore = []) => {
         }
     })
 
+    const historyBtn = GAME_CONT.getChildByLabel('HISTORY_BUTTON_TEXTBOX', { deep: true })
+    const skipBtn = GAME_CONT.getChildByLabel('SKIP_BUTTON_TEXTBOX', { deep: true })
+    const autoBtn = GAME_CONT.getChildByLabel('AUTO_BUTTON_TEXTBOX', { deep: true })
+    const saveBtn = GAME_CONT.getChildByLabel('SAVE_BUTTON_TEXTBOX', { deep: true })
+    const loadBtn = GAME_CONT.getChildByLabel('LOAD_BUTTON_TEXTBOX', { deep: true })
+    const settingsBtn = GAME_CONT.getChildByLabel('SETTINGS_BUTTON_TEXTBOX', { deep: true })
+
     historyBtn.on('pointerdown', () => {
         GameMenuCont.visible = true
+        GameMenuHeader.text = "История"
         gsap.to(GameMenuCont, { alpha: 1, duration: 1.5 })
     })
 
+    skipBtn.on('pointerdown', () => {
+        alert("Кнопка \"Пропустить\". Пока что тут просто заглушка.")
+    })
+
+    autoBtn.on('pointerdown', () => {
+        alert("Кнопка \"Авто\". Пока что тут просто заглушка.")
+    })
+
+    saveBtn.on('pointerdown', () => {
+        GameMenuCont.visible = true
+        GameMenuHeader.text = "Сохранить"
+        gsap.to(GameMenuCont, { alpha: 1, duration: 1.5 })
+    })
+
+    loadBtn.on('pointerdown', () => {
+        GameMenuCont.visible = true
+        GameMenuHeader.text = "Загрузить"
+        gsap.to(GameMenuCont, { alpha: 1, duration: 1.5 })
+    })
+
+    settingsBtn.on('pointerdown', () => {
+        GameMenuCont.visible = true
+        GameMenuHeader.text = "Настройки"
+        gsap.to(GameMenuCont, { alpha: 1, duration: 1.5 })
+    })
+
+    // Отработка событий в боковом меню для модалки
+    // Кнопка "Назад"
+    const backButton = GameMenuCont.getChildByLabel('BACK_BUTTON', { deep: true })
+    backButton.on('pointerdown', () => {
+        window.playSound(sounds.SELECT.src)
+        gsap.to(GameMenuCont, {
+            alpha: 0, duration: 1, onComplete: () => {
+                GameMenuCont.visible = false
+            }
+        })
+    })
+
+    // Кнопка "Помощь"
+    const helpButton = GameMenuCont.getChildByLabel('HELP_BUTTON', { deep: true })
+    helpButton.on('pointerdown', () => {
+        window.playSound(sounds.SELECT.src)
+        window.open('/README.html', '_blank')
+    })
 
     app.stage.addChild(GAME_CONT)
 }

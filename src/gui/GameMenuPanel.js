@@ -72,6 +72,8 @@ export const GameMenuPanel = () => {
         text.eventMode = 'static'
         text.cursor = 'pointer'
 
+        text.label = btn.tag
+
         // hover
         text.on('pointerover', () => {
             text.style.fill = 'rgb(190, 105, 160)'
@@ -95,6 +97,10 @@ export const GameMenuPanel = () => {
     asideMenuContainer.addChild(menuContainer)
 
     GameMenuContainer.addChild(asideMenuContainer)
+
+    // ПАНЕЛИ
+    // История
+    
 
     GameMenuContainer.alpha = 0
     GameMenuContainer.visible = false
