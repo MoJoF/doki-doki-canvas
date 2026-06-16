@@ -1,4 +1,4 @@
-import { Application } from "pixi.js";
+import { Application, Assets } from "pixi.js";
 import { textures, loadTextures, sounds } from './constants'
 import { drawTextbox } from "./gui/drawTextbox";
 import { typewriter } from "./typewriter";
@@ -62,6 +62,12 @@ window.playMusic = (src) => {
     window.currentMusic.src = src
     window.currentMusic.play()
 }
+
+Assets.addBundle('start', [
+    { alias: 'warning_bg', src: `${textures.BG_WARNING}` },
+    { alias: 'warning_bg2', src: `${textures.BG_WARNING2}` },
+    { alias: 'textbox_sprite', src: `${textures.TEXTBOX.src}` }
+])
 
 loadTextures().then(() => {
     if (window.CURRENT_SCENE === 'MAIN_MENU') {
