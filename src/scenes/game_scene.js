@@ -5,6 +5,7 @@ import { app } from "../main.js"
 import { gsap } from "gsap"
 import { process_lore } from "../lore/process_lore.js"
 import { act1 } from "../lore/act1.js"
+import { GameMenuPanel } from "../gui/GameMenuPanel.js"
 
 
 export const game_scene = (lore = []) => {
@@ -68,9 +69,13 @@ export const game_scene = (lore = []) => {
 
     textboxCont.y -= 10
 
-    app.stage.addChild(GAME_CONT)
-
     const clickable_lore = textboxCont.getChildByLabel('clickable_lore')
+    
+    // Подменю
+    const GameMenuCont = GameMenuPanel()
+    GAME_CONT.addChild(GameMenuCont)
+    
+    const historyBtn = GAME_CONT.getChildByLabel('HISTORY_BUTTON_TEXTBOX', { deep: true })
 
     gsap.to(GAME_CONT, {
         alpha: 1, duration: 1, onComplete: () => {
@@ -84,4 +89,12 @@ export const game_scene = (lore = []) => {
             })
         }
     })
+
+    historyBtn.on('pointerdown', () => {
+        GameMenuCont.visible = true
+        gsap.to(GameMenuCont, { alpha: 1, duration: 1.5 })
+    })
+
+
+    app.stage.addChild(GAME_CONT)
 }

@@ -2,6 +2,7 @@ import { Container, Graphics, Sprite, Text, TextStyle } from "pixi.js"
 import { textures } from "../constants"
 import { app } from "../main"
 
+
 export const drawTextbox = (drawBtns = true, name = null) => {
     const tbCont = new Container()
     const tbTexture = textures.TEXTBOX.texture
@@ -24,12 +25,12 @@ export const drawTextbox = (drawBtns = true, name = null) => {
         const menuCont = new Container()
 
         const buttons = [
-            { tag: 'HISTORY_BUTTON', label: 'История' },
-            { tag: 'SKIP_BUTTON', label: 'Пропуск' },
-            { tag: 'AUTO_BUTTON', label: 'Авто' },
-            { tag: 'SAVE_BUTTON', label: 'Сохранить' },
-            { tag: 'LOAD_BUTTON', label: 'Загрузить' },
-            { tag: 'SETTINGS_BUTTON', label: 'Настройки' }
+            { tag: 'HISTORY_BUTTON_TEXTBOX', label: 'История' },
+            { tag: 'SKIP_BUTTON_TEXTBOX', label: 'Пропуск' },
+            { tag: 'AUTO_BUTTON_TEXTBOX', label: 'Авто' },
+            { tag: 'SAVE_BUTTON_TEXTBOX', label: 'Сохранить' },
+            { tag: 'LOAD_BUTTON_TEXTBOX', label: 'Загрузить' },
+            { tag: 'SETTINGS_BUTTON_TEXTBOX', label: 'Настройки' }
         ]
 
         const totalButtons = buttons.length
@@ -61,6 +62,7 @@ export const drawTextbox = (drawBtns = true, name = null) => {
 
             text.x = centerX
             text.y = baseY
+            text.label = btn.tag
 
             text.eventMode = 'static'
             text.cursor = 'pointer'
@@ -81,6 +83,8 @@ export const drawTextbox = (drawBtns = true, name = null) => {
         })
         tbCont.addChild(menuCont)
     }
+
+    
 
     // NAMEBOX
     const nameboxTexture = textures.NAMEBOX.texture

@@ -6,6 +6,7 @@ import PixiSlider from "../gui/slider.js"
 
 export const settingsMenu = (parent) => {
     const settingsContainer = new Container()
+    settingsContainer.label = "Настройки"
     settingsContainer.position.set(560, 170)
 
     const textOptionsContainer = new Container()
