@@ -41,6 +41,8 @@ export const loadMenu = (parent) => {
         saveItemSprite.height = textures.SAVE_FRAME.h
         saveItemSprite.scale = 1.25
 
+        saveItemSprite.label = "SAVE_SPRITE"
+
         const saveText = new Text({
             text: 'Пустой слот',
             style: new TextStyle({
@@ -54,6 +56,8 @@ export const loadMenu = (parent) => {
                 }
             })
         })
+
+        saveText.label = "SAVE_TEXT"
 
         saveItem.width = saveItemSprite.width * saveItemSprite.scale
         saveItem.height = saveItemSprite.height * saveItemSprite.scale + 50

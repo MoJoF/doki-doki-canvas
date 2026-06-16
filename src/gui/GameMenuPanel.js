@@ -1,14 +1,20 @@
 import gsap from "gsap"
-import { Container, Graphics, Sprite, Text, TextStyle } from "pixi.js"
+import { Container, Graphics, Sprite, Text, TextStyle, TilingSprite } from "pixi.js"
 import { textures, sounds } from "../constants"
 import { app } from '../main'
+import { settingsMenu } from "./settingsMenu"
+import { loadMenu } from "./loadMenu"
 
 
 export const GameMenuPanel = () => {
     const GameMenuContainer = new Container()
     GameMenuContainer.label = "GAME_MENU_CONTAINER"
 
-    const bg = new Graphics().rect(0, 0, app.screen.width, app.screen.height).fill('#fff')
+    const bgTexture = textures.BG_MAIN_MENU.texture
+
+    const bg = new TilingSprite({
+        texture: bgTexture, width: app.screen.width, height: app.screen.height
+    })
 
     const asideMenuContainer = new Container()
     asideMenuContainer.label = "Aside"
@@ -100,7 +106,19 @@ export const GameMenuPanel = () => {
 
     // ПАНЕЛИ
     // История
-    
+
+
+    // Загрузить
+    const loading = loadMenu(GameMenuContainer)
+    loading.label = "LOAD_MODAL"
+    loading.visible = true
+
+    // Настройки
+    const settings = settingsMenu(GameMenuContainer)
+    settings.visible = false
+    settings.label = "SETTINGS_MODAL"
+
+    GameMenuContainer.addChild(settings)
 
     GameMenuContainer.alpha = 0
     GameMenuContainer.visible = false
