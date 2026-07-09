@@ -59,7 +59,6 @@ export const settingsMenu = (parent) => {
     textOptionsContainer.addChild(textSpeedSlider)
     textOptionsContainer.addChild(slowerText)
 
-
     const audioOptionsContainer = new Container()
     audioOptionsContainer.position.set(textOptionsContainer.x + textOptionsContainer.width + 40, textOptionsContainer.y)
 

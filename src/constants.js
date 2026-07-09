@@ -26,6 +26,10 @@ export const textures = {
     SAYORI_10: { src: './assets/images/sayori/Say25.webp', w: 960, h: 960 },
     SAYORI_13: { src: './assets/images/sayori/Say7.webp', w: 960, h: 960 },
     SAYORI_14: { src: './assets/images/sayori/3b.webp', w: 960, h: 960 },
+    SAYORI_15: { src: './assets/images/sayori/Ori1.webp', w: 960, h: 960 },
+
+    // YURI
+    YURI_1: { src: './assets/images/yuri/',  },
     
     // WARNING
     BG_WARNING: { src: './assets/images/bg/warning.png', w: 1280, h: 720 },
