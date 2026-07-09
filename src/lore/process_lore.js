@@ -5,10 +5,13 @@ import gsap from "gsap"
 import { anims_process } from "./anims_process"
 import { sprites_existing_process } from "./sprites_existing_process"
 
+
+
 export const process_lore = (lore, i) => {
     const item = lore[i]
 
     // UI
+    const debugIndexText = app.stage.getChildByLabel('debugIndexText', { deep: true })
     const namePanel = app.stage.getChildByLabel('namePanel', { deep: true }) // контейнер с именем (textbox)
     const nameText = app.stage.getChildByLabel('nameText', { deep: true }) // текст имени 
     const scenarioText = app.stage.getChildByLabel('scenario', { deep: true }) // текст сюжета
@@ -17,6 +20,8 @@ export const process_lore = (lore, i) => {
     const yuriSprite = app.stage.getChildByLabel('Юри', { deep: true }) // Спрайт Юри
     const natsukiSprite = app.stage.getChildByLabel('Нацуки', { deep: true }) // Спрайт Нацуки
     const sayoriSprite = app.stage.getChildByLabel('Сайори', { deep: true }) // Спрайт Сайори
+
+    debugIndexText.text = `i: ${i}`
 
     // Обработка вывода текста
     if (item.text) {

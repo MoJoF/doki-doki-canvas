@@ -1,6 +1,6 @@
 import { textures, sounds } from "../constants.js"
 import { drawTextbox } from "../gui/drawTextbox.js"
-import { Container, Sprite, Text, TextStyle } from "pixi.js"
+import { Container, Graphics, Sprite, Text, TextStyle } from "pixi.js"
 import { app } from "../main.js"
 import { gsap } from "gsap"
 import { process_lore } from "../lore/process_lore.js"
@@ -44,16 +44,19 @@ export const game_scene = (lore = []) => {
     sayoriSprite.visible = false
 
     yuriSprite.anchor.set(0.5, 0)
+    yuriSprite.position.set(app.screen.width / 2, 0)
     yuriSprite.label = 'Юри'
     yuriSprite.alpha = 0
     yuriSprite.visible = false
 
     monikaSprite.anchor.set(0.5, 0)
+    monikaSprite.position.set(app.screen.width / 2, 0)
     monikaSprite.label = 'Моника'
     monikaSprite.alpha = 0
     monikaSprite.visible = false
 
     natsukiSprite.anchor.set(0.5, 0)
+    natsukiSprite.position.set(app.screen.width / 2, 0)
     natsukiSprite.label = 'Нацуки'
     natsukiSprite.alpha = 0
     natsukiSprite.visible = false
@@ -79,7 +82,7 @@ export const game_scene = (lore = []) => {
 
     gsap.to(GAME_CONT, {
         alpha: 1, duration: 1, onComplete: () => {
-            let i = 46
+            let i = 86
 
             process_lore(lore, i)
 
@@ -148,5 +151,23 @@ export const game_scene = (lore = []) => {
         window.open('/README.html', '_blank')
     })
 
+
+
+    const debugPanel = new Graphics().roundRect(25, 25, 50, 30, 3).fill('rgba(0,0,0,0.75)')
+    debugPanel.label = "DebugPanel"
+    const t = new Text({
+        text: "i: ",
+        style: new TextStyle({
+            fontFamily: "Trebuchet MS",
+            fontSize: 16,
+            fill: "#ffffff",
+        })
+    })
+
+    t.label = "debugIndexText"
+    t.position.set(30, 30)
+    debugPanel.addChild(t)
+
+    GAME_CONT.addChild(debugPanel)
     app.stage.addChild(GAME_CONT)
 }

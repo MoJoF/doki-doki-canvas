@@ -29,7 +29,18 @@ export const textures = {
     SAYORI_15: { src: './assets/images/sayori/Ori1.webp', w: 960, h: 960 },
 
     // YURI
-    YURI_1: { src: './assets/images/yuri/',  },
+    YURI_1: { src: './assets/images/yuri/Yuri_school_2.webp', w: 960, h: 960 },
+    YURI_2: { src: './assets/images/yuri/YBashful_Smile_2.webp', w: 960, h: 960 },
+    
+
+    // NATSUKI: 
+    NATSUKI_1: { src: './assets/images/natsuki/Y14.webp', w: 960, h: 960 },
+    NATSUKI_2: { src: './assets/images/natsuki/Schoolb.webp', w: 960, h: 960 },
+    
+
+    // MONIKA
+    MONIKA_1: {src: './assets/images/monika/Mon11.webp', w: 960, h: 960 },
+    MONIKA_2: {src: './assets/images/monika/Mon1.webp', w: 960, h: 960 },
     
     // WARNING
     BG_WARNING: { src: './assets/images/bg/warning.png', w: 1280, h: 720 },
