@@ -61,6 +61,9 @@ export const game_scene = (lore = []) => {
     natsukiSprite.alpha = 0
     natsukiSprite.visible = false
 
+    const savedBg = localStorage.getItem('bg')
+    if (savedBg) bgSprite.texture = textures[savedBg].texture
+
     GAME_CONT.addChild(bgSprite)
 
     GAME_CONT.addChild(sayoriSprite)
@@ -82,7 +85,7 @@ export const game_scene = (lore = []) => {
 
     gsap.to(GAME_CONT, {
         alpha: 1, duration: 1, onComplete: () => {
-            let i = 86
+            let i = 81
 
             process_lore(lore, i)
 

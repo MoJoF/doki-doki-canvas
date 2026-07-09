@@ -40,6 +40,7 @@ export const process_lore = (lore, i) => {
     // Выставляем задний фон
     if (item.bg && bg) {
         const targetTexture = textures[item.bg]?.texture
+        localStorage.setItem('bg', item.bg)
 
         if (targetTexture) {
             bg.texture = targetTexture
