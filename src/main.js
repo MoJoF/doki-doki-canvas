@@ -12,9 +12,13 @@ import { act1 } from "./lore/act1";
 export const app = new Application()
 
 await app.init({
+    resizeTo: window,
+    antialias: true,
     width: window.innerWidth,
     height: window.innerHeight,
-    backgroundColor: 0x121212,
+    resolution: window.devicePixelRatio || 1,
+    autoDensity: true,
+    backgroundColor: 0xffffff,
     webgl: { antialias: true },
     webgpu: { antialias: false },
     preserveDrawingBuffer: true
@@ -24,7 +28,7 @@ globalThis.__PIXI_APP__ = app;
 
 document.body.appendChild(app.canvas)
 
-window.CURRENT_SCENE = "GAME"
+window.CURRENT_SCENE = "WARNING"
 
 // Глобальный массив с лором
 window.lore = []
@@ -69,17 +73,48 @@ Assets.addBundle('start', [
     { alias: 'textbox_sprite', src: `${textures.TEXTBOX.src}` }
 ])
 
-loadTextures().then(() => {
-    if (window.CURRENT_SCENE === 'MAIN_MENU') {
-        main_menu_scene()
-    } else if (window.CURRENT_SCENE === 'GAME') {
-        game_scene(act1)
-    } else if (window.CURRENT_SCENE === 'WRITE_POEM') {
-        write_poem_scene()
-    } else if (window.CURRENT_SCENE === 'WARNING') {
-        warning_scene()
-    }
+
+const loader = document.querySelector('#loader');
+const loaderProgress = document.querySelector('#loader-progress');
+const loaderPercent = document.querySelector('#loader-percent');
+const loaderStatus = document.querySelector('#loader-status');
+
+loadTextures((loaded, total) => {
+    const percent = total === 0
+        ? 100
+        : Math.round((loaded / total) * 100);
+
+    loaderProgress.style.width = `${percent}%`;
+    loaderPercent.textContent = `${percent}%`;
+    loaderStatus.textContent = 'Загрузка ресурсов...';
 })
+    .then(() => {
+        loaderStatus.textContent = 'Запуск игры...';
+
+        if (window.CURRENT_SCENE === 'MAIN_MENU') {
+            main_menu_scene();
+        } else if (window.CURRENT_SCENE === 'GAME') {
+            game_scene(act1);
+        } else if (window.CURRENT_SCENE === 'WRITE_POEM') {
+            write_poem_scene();
+        } else if (window.CURRENT_SCENE === 'WARNING') {
+            warning_scene();
+        }
+
+        // Даём браузеру отрисовать запущенную сцену
+        requestAnimationFrame(() => {
+            loader.classList.add('is-hidden');
+        });
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки ресурсов:', error);
+
+        loaderStatus.textContent =
+            'Не удалось загрузить игру. Обновите страницу и попробуйте снова.';
+
+        loaderPercent.textContent = '';
+    });
+
 
 
 window.addEventListener('keydown', e => {

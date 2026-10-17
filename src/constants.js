@@ -31,28 +31,28 @@ export const textures = {
     // YURI
     YURI_1: { src: './assets/images/yuri/Yuri_school_2.webp', w: 960, h: 960 },
     YURI_2: { src: './assets/images/yuri/YBashful_Smile_2.webp', w: 960, h: 960 },
-    
+
 
     // NATSUKI: 
     NATSUKI_1: { src: './assets/images/natsuki/Y14.webp', w: 960, h: 960 },
     NATSUKI_2: { src: './assets/images/natsuki/Schoolb.webp', w: 960, h: 960 },
-    
+
 
     // MONIKA
-    MONIKA_1: {src: './assets/images/monika/Mon11.webp', w: 960, h: 960 },
-    MONIKA_2: {src: './assets/images/monika/Mon1.webp', w: 960, h: 960 },
-    
+    MONIKA_1: { src: './assets/images/monika/Mon11.webp', w: 960, h: 960 },
+    MONIKA_2: { src: './assets/images/monika/Mon1.webp', w: 960, h: 960 },
+
     // WARNING
     BG_WARNING: { src: './assets/images/bg/warning.png', w: 1280, h: 720 },
     BG_WARNING2: { src: './assets/images/bg/warning2.png', w: 1280, h: 720 },
     BTN_BG: { src: './assets/images/gui/button/choice_idle_background.png', w: 400, h: 35 },
     BTN_HOVER_BG: { src: './assets/images/gui/button/choice_hover_background.png', w: 400, h: 35 },
-    
+
     // MAIN MENU
     FIRST_SPLASH: { src: './assets/images/bg/splash.png', w: 1280, h: 720 },
     LOGO: { src: './assets/images/gui/logo.png', w: 512, h: 512 },
     BG_MAIN_MENU: { src: './assets/images/gui/menu_bg.png', w: 1380, h: 1320 },
-    SAVE_FRAME: { src: './assets/images/gui/button/slot_idle_background_new.png', w: 256, h: 144 }, 
+    SAVE_FRAME: { src: './assets/images/gui/button/slot_idle_background_new.png', w: 256, h: 144 },
     UI_ASIDE_MENU: { src: './assets/images/gui/overlay/main_menu.png', w: 1280, h: 720 },
     MENU_ART_SAYORI: { src: './assets/images/gui/menu_art_s.png', w: 411, h: 1080 },
     MENU_ART_NATSUKI: { src: './assets/images/gui/menu_art_n.png', w: 400, h: 1080 },
@@ -63,12 +63,26 @@ export const textures = {
     BG_NOTEBOOK: { src: '/assets/images/bg/notebook.png' }
 }
 
-export const loadTextures = async () => {
-    for (const key in textures) {
-        const texture = await Assets.load(textures[key].src)
-        textures[key].texture = texture
-    }
-}
+export const loadTextures = async (onProgress = () => { }) => {
+    const entries = Object.entries(textures);
+    const total = entries.length;
+
+    let loaded = 0;
+
+    onProgress(0, total);
+
+    await Promise.all(
+        entries.map(async ([key, item]) => {
+            const texture = await Assets.load(item.src);
+
+            item.texture = texture;
+
+            loaded++;
+            onProgress(loaded, total);
+        })
+    );
+};
+
 
 export const sounds = {
     HOVER: { src: './assets/audio/gui/sfx/hover.ogg' },
